@@ -7,9 +7,11 @@ export const resumeSchema = z.object({
   address: z.string().optional(),
   careerObjective: z.string().optional(),
   education: z.string().optional(),
-  skills: z.string().optional(),
+  skills: z.array(z.string()).default([]),
   projects: z.string().optional(),
   certifications: z.string().optional(),
+  photoUrl: z.string().optional(),
+  template: z.enum(["classic", "modern", "minimal"]).default("classic"),
 });
 
 export type ResumeData = z.infer<typeof resumeSchema>;
